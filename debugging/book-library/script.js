@@ -9,13 +9,11 @@ const tableBody = document.getElementById("table-body");
 const deleteMsg = document.getElementById("delete-msg");
 const submitBtn = document.getElementById("submit-btn");
 
-// Moved submit listener here since type="module" isolates scope from global
-submitBtn.addEventListener("click", submit);
-
 window.addEventListener("load", function () {
-  // Removed extra render() call
-  // — populateStorage() already calls it internally
+  submitBtn.addEventListener("click", submit);
+  // Populate default books, then draw the table
   populateStorage();
+  render();
 });
 
 function populateStorage() {
@@ -25,7 +23,6 @@ function populateStorage() {
     myLibrary.push(
       new Book("The Old Man and the Sea", "Ernest Hemingway", 127, true)
     );
-    render();
   }
 }
 
